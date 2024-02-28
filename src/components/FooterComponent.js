@@ -26,16 +26,10 @@ const FooterComponent = () => {
 			>
 				<Text>© 2022 Chakra Templates. All rights reserved</Text>
 				<Stack direction={'row'} spacing={6}>
-					<SocialButton
-						label={'Twitter'}
-						href={'https://twitter.com/angelgonzaleh'}
-					>
+					<SocialButton label={'Twitter'} href={'https://twitter.com/angelgonzaleh'}>
 						<FaTwitter />
 					</SocialButton>
-					<SocialButton
-						label={'GitHub'}
-						href={'https://github.com/angelgonzalezev'}
-					>
+					<SocialButton label={'GitHub'} href={'https://github.com/angelgonzalezev'}>
 						<FaGithub />
 					</SocialButton>
 				</Stack>

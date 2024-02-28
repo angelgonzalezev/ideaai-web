@@ -42,17 +42,12 @@ const AuthPopUp = ({ onClose }) => {
 	return (
 		<div className='w-full h-full bg-black fixed top-0 left-0 px-3 bg-opacity-50 flex items-center justify-center z-50'>
 			<div className='bg-white rounded-2xl p-5 lg:p-10 h-fit max-w-[930px]'>
-				<div
-					className='w-full mb-5 flex flex-row justify-end'
-					onClick={() => onClose()}
-				>
+				<div className='w-full mb-5 flex flex-row justify-end' onClick={() => onClose()}>
 					<div className='p-1 rounded-xl hover:border hover:border-rose-200'>
 						<AiOutlineClose size={25} />
 					</div>
 				</div>
-				<h1 className='text-2xl font-bold mb-5'>
-					Empieza a usar WeSpeech 😊
-				</h1>
+				<h1 className='text-2xl font-bold mb-5'>Empieza a usar WeSpeech 😊</h1>
 				<InputComponent
 					titleInput={'Email'}
 					inputName={'email'}
@@ -69,14 +64,9 @@ const AuthPopUp = ({ onClose }) => {
 					onWrite={value => changeForm('password', value)}
 					border
 				/>
-				{error && (
-					<p className='text-xs italic text-red-500'>{error}</p>
-				)}
+				{error && <p className='text-xs italic text-red-500'>{error}</p>}
 				<div className='w-full flex items-center justify-center my-5'>
-					<ButtonComponent
-						text={'Iniciar sesión'}
-						onHandleButton={() => signIn()}
-					/>
+					<ButtonComponent text={'Iniciar sesión'} onHandleButton={() => signIn()} />
 				</div>
 				<p className='text-xs italic text-gray-400'>
 					Si no tienes una cuenta, se creará automáticamente.

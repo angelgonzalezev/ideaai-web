@@ -1,5 +1,3 @@
-'use client';
-
 import {
 	Box,
 	Heading,
@@ -29,23 +27,18 @@ const HeroComponent = () => {
 					>
 						Save hours creating your <br />
 						<Box>
-							<Text
-								as={'span'}
-								fontStyle={'italic'}
-								color={'green.400'}
-							>
+							<Text as={'span'} fontStyle={'italic'} color={'green.400'}>
 								Business Model Canvas
 							</Text>
 							<Text> with AI.</Text>
 						</Box>
 					</Heading>
 					<Text color={'gray.500'}>
-						Optimize your Business Model Canvas creation with our
-						AI-powered platform, designed to save time and effort in
-						developing your business model. We facilitate the
-						generation of new ideas and the design of persuasive
-						pitches for investors, transforming the path to business
-						success into a more efficient and productive experience.
+						Optimize your Business Model Canvas creation with our AI-powered platform,
+						designed to save time and effort in developing your business model. We
+						facilitate the generation of new ideas and the design of persuasive pitches
+						for investors, transforming the path to business success into a more
+						efficient and productive experience.
 					</Text>
 					<Stack
 						direction={'column'}
@@ -66,20 +59,13 @@ const HeroComponent = () => {
 						>
 							Create your BMC
 						</Button>
-						<Button
-							variant={'link'}
-							colorScheme={'blue'}
-							size={'sm'}
-						>
+						<Button variant={'link'} colorScheme={'blue'} size={'sm'}>
 							How it works?
 						</Button>
 						<Box>
 							<Icon
 								as={Arrow}
-								color={useColorModeValue(
-									'gray.800',
-									'gray.300',
-								)}
+								color={useColorModeValue('gray.800', 'gray.300')}
 								w={71}
 								position={'absolute'}
 								right={-71}
