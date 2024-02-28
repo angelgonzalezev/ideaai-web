@@ -56,9 +56,11 @@ const features = [
 
 const CustomerSegmentSection = () => {
 	return (
-		<Box p={4}>
+		<Box p={4} id='who'>
 			<Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-				<Heading fontSize={'3xl'}>{"Who's it for?"}</Heading>
+				<Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'}>
+					Who is it for?
+				</Heading>
 				<Text color={'gray.600'} fontSize={'xl'}>
 					Mixing up the biz planning game for everyone, everywhere, with some smart AI
 					that cranks out Business Model Canvases.
