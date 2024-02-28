@@ -10,7 +10,7 @@ import {
 	createIcon,
 } from '@chakra-ui/react';
 
-const HeroComponent = () => {
+const HeroSection = () => {
 	return (
 		<>
 			<Container maxW={'3xl'}>
@@ -102,4 +102,4 @@ const Arrow = createIcon({
 	),
 });
 
-export default HeroComponent;
+export default HeroSection;
