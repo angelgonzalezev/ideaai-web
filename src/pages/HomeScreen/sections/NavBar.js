@@ -281,7 +281,7 @@ const NAV_ITEMS = [
 	},
 	{
 		label: 'Pricing',
-		href: '#',
+		href: 'price',
 	},
 ];
 
