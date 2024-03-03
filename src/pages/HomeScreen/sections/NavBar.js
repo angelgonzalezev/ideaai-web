@@ -15,6 +15,7 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Link } from 'react-scroll';
 
 const NavBar = () => {
 	const { isOpen, onToggle } = useDisclosure();
@@ -51,18 +52,32 @@ const NavBar = () => {
 							md: 'left',
 						})}
 						fontFamily={'heading'}
+						fontSize={'x-large'}
 						color={useColorModeValue('gray.800', 'white')}
 					>
-						Logo
+						IDEAAI
 					</Text>
 
-					<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+					<Flex display={{ base: 'none', md: 'flex' }} ml={10} alignItems={'center'}>
 						<DesktopNav />
 					</Flex>
 				</Flex>
 
 				<Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
-					<Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
+					<Button
+						display={{ base: 'none', md: 'flex' }}
+						colorScheme={'green'}
+						bg={'green.400'}
+						rounded={'full'}
+						px={6}
+						_hover={{
+							bg: 'green.500',
+						}}
+						size={'md'}
+					>
+						Create your BMC
+					</Button>
+					{/* <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
 						Sign In
 					</Button>
 					<Button
@@ -78,7 +93,7 @@ const NavBar = () => {
 						}}
 					>
 						Sign Up
-					</Button>
+					</Button> */}
 				</Stack>
 			</Flex>
 
@@ -112,7 +127,15 @@ const DesktopNav = () => {
 									color: linkHoverColor,
 								}}
 							>
-								{navItem.label}
+								<Link
+									activeClass='active'
+									to={navItem.href}
+									spy={true}
+									smooth={true}
+									duration={1000}
+								>
+									{navItem.label}
+								</Link>
 							</Box>
 						</PopoverTrigger>
 
@@ -205,9 +228,11 @@ const MobileNavItem = ({ label, children, href }) => {
 					textDecoration: 'none',
 				}}
 			>
-				<Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
-					{label}
-				</Text>
+				<Link activeClass='active' to={href} spy={true} smooth={true} duration={1000}>
+					<Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+						{label}
+					</Text>
+				</Link>
 				{children && (
 					<Icon
 						as={ChevronDownIcon}
@@ -243,15 +268,15 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
 	{
 		label: "Who's it for",
-		href: '#who',
+		href: 'who',
 	},
 	{
 		label: 'How it works',
-		href: '#how-it-works',
+		href: 'how-it-works',
 	},
 	{
 		label: 'Use Cases',
-		href: '#use-cases',
+		href: 'use-cases',
 	},
 	{
 		label: 'Pricing',

@@ -10,6 +10,8 @@ import {
 	createIcon,
 } from '@chakra-ui/react';
 
+import { Link } from 'react-scroll';
+
 const HeroSection = () => {
 	return (
 		<>
@@ -59,9 +61,17 @@ const HeroSection = () => {
 						>
 							Create your BMC
 						</Button>
-						<Box as='a' size={'sm'} href={'#how-it-works'} textDecor={'underline'}>
-							How it works?
-						</Box>
+						<Link
+							activeClass='active'
+							to='how-it-works'
+							spy={true}
+							smooth={true}
+							duration={1000}
+						>
+							<Text as={'a'} cursor='pointer' _hover={{ color: 'blue' }}>
+								How it works?
+							</Text>
+						</Link>
 						<Box>
 							<Icon
 								as={Arrow}

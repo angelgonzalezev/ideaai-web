@@ -5,7 +5,7 @@ import CustomerSegmentSection from './sections/CustomerSegmentSection';
 import HowItWorksSection from './sections/HowItWorksSection';
 import FooterComponent from '../../components/FooterComponent';
 import UseCasesSection from './sections/UseCasesSection';
-// import NavBar from './sections/NavBar';
+import NavBar from './sections/NavBar';
 
 const HomeScreen = () => {
 	const { user } = useAuth();
@@ -18,7 +18,7 @@ const HomeScreen = () => {
 
 	return (
 		<div>
-			{/* <NavBar /> */}
+			<NavBar />
 			<HeroSection />
 			<CustomerSegmentSection />
 			<HowItWorksSection />
