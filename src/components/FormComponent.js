@@ -14,8 +14,9 @@ import {
 	Input,
 	Spinner,
 } from '@chakra-ui/react';
+import { getSpeech } from '../services/formService';
 
-const Form = ({ id, title, question, type, onWrite, value }) => {
+const Form = ({ id, title, question, type, onWrite, value, inputName }) => {
 	return (
 		<>
 			<SimpleGrid columns={1} spacing={6} key={id}>
@@ -33,7 +34,7 @@ const Form = ({ id, title, question, type, onWrite, value }) => {
 					{type === 'text' ? (
 						<Input
 							type='text'
-							name='postal_code'
+							name={inputName}
 							id='postal_code'
 							autoComplete='postal-code'
 							focusBorderColor='brand.400'
@@ -54,6 +55,7 @@ const Form = ({ id, title, question, type, onWrite, value }) => {
 							}}
 							onChange={value => onWrite(value)}
 							value={value}
+							name={inputName}
 						/>
 					)}
 					<FormHelperText>{question}</FormHelperText>
@@ -65,8 +67,13 @@ const Form = ({ id, title, question, type, onWrite, value }) => {
 
 const FormComponent = ({ questions }) => {
 	const [step, setStep] = useState(1);
-	const [form, setForm] = useState([]);
-	const { id, title, question, type } = questions[step - 1];
+	const form = {
+		name: '',
+		description: '',
+		target: '',
+		geo: '',
+	};
+	const { id, title, question, type, inputName } = questions[step - 1];
 	const currentProgress = (step * 100) / questions.length;
 	const [generated, setGenerated] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -77,19 +84,18 @@ const FormComponent = ({ questions }) => {
 		} else {
 			setLoading(true);
 			setGenerated(false);
-			console.log('Finish');
+			getSpeech(form)
+				.then(response => {
+					console.log('Res', response);
+					setLoading(false);
+				})
+				.catch(e => console.log('Error', e));
 		}
 	};
 
-	const onWrite = data => {
-		const _form = [...form];
+	const onWrite = (field, data) => {
 		const value = data.target.value;
-		_form[step - 1] = {
-			title,
-			question,
-			value,
-		};
-		setForm(_form);
+		form[field] = value;
 	};
 
 	return (
@@ -139,8 +145,9 @@ const FormComponent = ({ questions }) => {
 							title={title}
 							question={question}
 							type={type}
-							onWrite={value => onWrite(value)}
+							onWrite={value => onWrite(inputName, value)}
 							value={form[step - 1]?.value}
+							inputName={inputName}
 						/>
 						<ButtonGroup mt='5%' w='100%'>
 							<Flex w='100%' justifyContent='space-evenly'>

@@ -4,6 +4,7 @@ export const questions = [
 		title: 'Name of the Idea',
 		question: 'What is the name of your idea or project?',
 		type: 'text',
+		inputName: 'name',
 	},
 	{
 		id: 2,
@@ -11,12 +12,14 @@ export const questions = [
 		question:
 			'Briefly describe your business idea. What problem does it solve or what need does it fulfill?',
 		type: 'textArea',
+		inputName: 'description',
 	},
 	{
 		id: 3,
 		title: 'Target and Customers',
 		question: 'Who are your target customers? Describe the market segments you plan to serve.',
 		type: 'textArea',
+		inputName: 'target',
 	},
 	{
 		id: 4,
@@ -24,5 +27,6 @@ export const questions = [
 		question:
 			'In which geographical areas do you plan to operate? Do you have any specific target markets in mind?',
 		type: 'textArea',
+		inputName: 'geo',
 	},
 ];
