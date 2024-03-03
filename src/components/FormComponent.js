@@ -12,6 +12,7 @@ import {
 	Textarea,
 	FormHelperText,
 	Input,
+	Spinner,
 } from '@chakra-ui/react';
 
 const Form = ({ id, title, question, type, onWrite, value }) => {
@@ -67,11 +68,15 @@ const FormComponent = ({ questions }) => {
 	const [form, setForm] = useState([]);
 	const { id, title, question, type } = questions[step - 1];
 	const currentProgress = (step * 100) / questions.length;
+	const [generated, setGenerated] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const handleOnNext = () => {
 		if (currentProgress !== 100) {
 			setStep(step + 1);
 		} else {
+			setLoading(true);
+			setGenerated(false);
 			console.log('Finish');
 		}
 	};
@@ -97,54 +102,72 @@ const FormComponent = ({ questions }) => {
 				p={6}
 				m='10px auto'
 				as='form'
+				display={'flex'}
+				alignItems={'center'}
+				justifyContent={'center'}
+				flexDirection={'column'}
 			>
-				<Progress
-					hasStripe
-					value={currentProgress}
-					mb='5%'
-					mx='5%'
-					colorScheme='green'
-					isAnimated
-					border={1}
-					borderRadius={'full'}
-				/>
+				<Box w={'full'}>
+					<Progress
+						hasStripe
+						value={currentProgress}
+						mb='5%'
+						mx='5%'
+						colorScheme='green'
+						isAnimated
+						border={1}
+						borderRadius={'full'}
+					/>
+				</Box>
 				<Heading w='100%' textAlign={'center'} fontWeight='normal' mb={6}>
 					{"Let's Generate Your Business Model Canvas!"}
 				</Heading>
-				<Form
-					key={id}
-					title={title}
-					question={question}
-					type={type}
-					onWrite={value => onWrite(value)}
-					value={form[step - 1]?.value}
-				/>
-				<ButtonGroup mt='5%' w='100%'>
-					<Flex w='100%' justifyContent='space-between'>
-						<Flex>
-							<Button
-								onClick={() => {
-									setStep(step - 1);
-								}}
-								isDisabled={step === 1}
-								colorScheme='teal'
-								variant='solid'
-								w='7rem'
-								mr='5%'
-							>
-								Back
-							</Button>
-							<Button
-								w='7rem'
-								onClick={handleOnNext}
-								colorScheme='teal'
-								variant='outline'
-							>
-								{currentProgress === 100 ? 'Finish' : 'Next'}
-							</Button>
-						</Flex>
-					</Flex>
-				</ButtonGroup>
+				{loading ? (
+					<Spinner
+						thickness='4px'
+						speed='1.1s'
+						emptyColor='gray.200'
+						color='green.500'
+						size='xl'
+						alignSelf={'center'}
+						justifySelf={'center'}
+					/>
+				) : !generated && !loading ? (
+					<>
+						<Form
+							key={id}
+							title={title}
+							question={question}
+							type={type}
+							onWrite={value => onWrite(value)}
+							value={form[step - 1]?.value}
+						/>
+						<ButtonGroup mt='5%' w='100%'>
+							<Flex w='100%' justifyContent='space-evenly'>
+								<Button
+									onClick={() => {
+										setStep(step - 1);
+									}}
+									isDisabled={step === 1}
+									colorScheme='teal'
+									variant='solid'
+									w='7rem'
+									mr='5%'
+								>
+									Back
+								</Button>
+								<Button
+									w='7rem'
+									onClick={handleOnNext}
+									colorScheme='teal'
+									variant='outline'
+								>
+									{currentProgress === 100 ? 'Finish' : 'Next'}
+								</Button>
+							</Flex>
+						</ButtonGroup>
+					</>
+				) : null}
 			</Box>
 		</>
 	);
