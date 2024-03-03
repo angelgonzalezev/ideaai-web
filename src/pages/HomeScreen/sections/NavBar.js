@@ -247,11 +247,11 @@ const NAV_ITEMS = [
 	},
 	{
 		label: 'How it works',
-		href: '#howItWorks',
+		href: '#how-it-works',
 	},
 	{
 		label: 'Use Cases',
-		href: '#',
+		href: '#use-cases',
 	},
 	{
 		label: 'Pricing',

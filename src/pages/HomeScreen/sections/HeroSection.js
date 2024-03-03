@@ -59,9 +59,9 @@ const HeroSection = () => {
 						>
 							Create your BMC
 						</Button>
-						<Button variant={'link'} colorScheme={'blue'} size={'sm'}>
+						<Box as='a' size={'sm'} href={'#how-it-works'} textDecor={'underline'}>
 							How it works?
-						</Button>
+						</Box>
 						<Box>
 							<Icon
 								as={Arrow}
