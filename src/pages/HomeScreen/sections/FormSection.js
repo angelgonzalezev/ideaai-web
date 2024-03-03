@@ -8,16 +8,20 @@ import {
 	ModalCloseButton,
 	Button,
 } from '@chakra-ui/react';
+import FormComponent from '../../../components/FormComponent';
+import { questions } from '../../../data';
 
-const FormComponent = ({ onOpen, onClose, isOpen }) => {
+const FormSection = ({ onClose, isOpen }) => {
 	return (
 		<>
 			<Modal onClose={onClose} size={'full'} isOpen={isOpen} motionPreset='slideInBottom'>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Modal Title</ModalHeader>
+					<ModalHeader alignSelf={'center'}></ModalHeader>
 					<ModalCloseButton />
-					<ModalBody>fvdsvfdsfdsbfdsbfdsbfdsbfdsbf</ModalBody>
+					<ModalBody alignSelf={'center'}>
+						<FormComponent questions={questions} />
+					</ModalBody>
 					<ModalFooter>
 						<Button onClick={onClose}>Close</Button>
 					</ModalFooter>
@@ -26,4 +30,4 @@ const FormComponent = ({ onOpen, onClose, isOpen }) => {
 		</>
 	);
 };
-export default FormComponent;
+export default FormSection;
