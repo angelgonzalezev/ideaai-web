@@ -98,7 +98,16 @@ const FormComponent = ({ questions }) => {
 				m='10px auto'
 				as='form'
 			>
-				<Progress hasStripe value={currentProgress} mb='5%' mx='5%' isAnimated></Progress>
+				<Progress
+					hasStripe
+					value={currentProgress}
+					mb='5%'
+					mx='5%'
+					colorScheme='green'
+					isAnimated
+					border={1}
+					borderRadius={'full'}
+				/>
 				<Heading w='100%' textAlign={'center'} fontWeight='normal' mb={6}>
 					{"Let's Generate Your Business Model Canvas!"}
 				</Heading>
