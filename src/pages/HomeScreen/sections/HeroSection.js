@@ -8,11 +8,14 @@ import {
 	Icon,
 	useColorModeValue,
 	createIcon,
+	useDisclosure,
 } from '@chakra-ui/react';
 
 import { Link } from 'react-scroll';
+import FormComponent from './FormSection';
 
-const HeroSection = () => {
+const HeroSection = ({ onCreateHandle }) => {
+	const { isOpen, onOpen, onClose } = useDisclosure();
 	return (
 		<>
 			<Container maxW={'3xl'}>
@@ -58,6 +61,7 @@ const HeroSection = () => {
 								bg: 'green.500',
 							}}
 							size={'lg'}
+							onClick={onCreateHandle}
 						>
 							Create your BMC
 						</Button>
@@ -95,6 +99,7 @@ const HeroSection = () => {
 					</Stack>
 				</Stack>
 			</Container>
+			<FormComponent onOpen={onOpen} onClose={onClose} isOpen={isOpen} />
 		</>
 	);
 };

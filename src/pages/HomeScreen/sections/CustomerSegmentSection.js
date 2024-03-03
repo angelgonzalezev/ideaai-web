@@ -48,7 +48,7 @@ const features = [
 		text: 'Accelerate the creation and prototyping of new business models using Convoboss. In bigger companies, our tool helps in rapidly producing and evaluating fresh business ideas.',
 	},
 	{
-		id: 7,
+		id: 8,
 		title: 'Incubators & Accelerators',
 		text: 'Boost the development of the startups you oversee. Employ our artificial intelligence tool to assist them in swiftly creating, polishing, and modifying their business strategies, fostering creativity and achievement.',
 	},

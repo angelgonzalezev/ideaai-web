@@ -17,7 +17,7 @@ import {
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Link } from 'react-scroll';
 
-const NavBar = () => {
+const NavBar = ({ onCreateHandle }) => {
 	const { isOpen, onToggle } = useDisclosure();
 
 	return (
@@ -74,6 +74,7 @@ const NavBar = () => {
 							bg: 'green.500',
 						}}
 						size={'md'}
+						onClick={onCreateHandle}
 					>
 						Create your BMC
 					</Button>
