@@ -9,6 +9,7 @@ import FormSection from './sections/FormSection';
 import NavBar from './sections/NavBar';
 import { useDisclosure } from '@chakra-ui/react';
 import PriceSection from './sections/PriceSection';
+import ChatSection from './sections/ChatSection';
 
 const HomeScreen = () => {
 	const { user } = useAuth();
@@ -29,7 +30,8 @@ const HomeScreen = () => {
 			<UseCasesSection />
 			<PriceSection />
 			<FooterComponent />
-			<FormSection isOpen={isOpen} onClose={onClose} />
+			{/* <FormSection isOpen={isOpen} onClose={onClose} /> */}
+			<ChatSection isOpen={isOpen} onClose={onClose} />
 		</div>
 	);
 };

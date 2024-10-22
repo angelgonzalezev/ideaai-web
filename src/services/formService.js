@@ -3,8 +3,8 @@ import axios from 'axios';
 const url = 'https://chatgpt-42.p.rapidapi.com/gpt4';
 const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
-export const getSpeech = async (data, user) => {
-	const speechContent = generatePropmpt(data);
+export const generateAIResponse = async (data, user, type) => {
+	const responsePrompt = type === 'question' ? generateQuestionPrompt : generateBMCPropmpt(data);
 	const options = {
 		method: 'POST',
 		url,
@@ -17,7 +17,7 @@ export const getSpeech = async (data, user) => {
 			messages: [
 				{
 					role: 'user',
-					content: speechContent,
+					content: responsePrompt,
 				},
 			],
 		},
@@ -32,7 +32,7 @@ export const getSpeech = async (data, user) => {
 	}
 };
 
-export const generatePropmpt = _data => {
+export const generateBMCPropmpt = _data => {
 	const data = {
 		name: 'GenerationAI',
 		description:
@@ -52,4 +52,15 @@ export const generatePropmpt = _data => {
 		'Actúa como una plataforma que utiliza inteligencia artificial y diseña un Business Model Canvas con la información aportada. Además quiero que amplíes la información de forma que el modelo negocio pueda ser realizable y añade ejemplos para cada apartado.  Muestra la información para cada uno de los apartados del Business Model Canvas en formato json y en el mismo orden en el que se completa. No añadas ningún texto diferente a la respuesta. Dame directamente la respuesta en formato json.</br> JSON:';
 
 	return header + ideaName + ideaDescription + ideaTarget + geography + footer;
+};
+
+export const generateQuestionPrompt = (idea, question) => {
+	const header =
+		'Imagine that you are a web platform based on artificial intelligence that, based on information about a business idea shared by a user, you are able to develop each of the points of a Business Model Canvas, in addition to making a compilation of the most important points for each of the sections of the Business Model Canvas. The information provided by the user is as follows:</br>';
+
+	const ideaName = `Name of the idea: ${idea}. </br>`;
+
+	const footer = `As a business development expert, develop a detailed list for the next question: ${question} for the idea.</br> JSON:`;
+
+	return header + ideaName + footer;
 };

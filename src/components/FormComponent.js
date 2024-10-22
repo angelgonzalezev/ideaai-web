@@ -14,7 +14,7 @@ import {
 	Input,
 	Spinner,
 } from '@chakra-ui/react';
-import { getSpeech } from '../services/formService';
+import { generateAIResponse, getBMC } from '../services/formService';
 
 const Form = ({ id, title, question, type, onWrite, value, inputName }) => {
 	return (
@@ -84,7 +84,7 @@ const FormComponent = ({ questions }) => {
 		} else {
 			setLoading(true);
 			setGenerated(false);
-			getSpeech(form)
+			generateAIResponse(form)
 				.then(response => {
 					console.log('Res', response);
 					setLoading(false);
